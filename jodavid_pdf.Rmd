@@ -1,0 +1,193 @@
+---
+title: "Jodavid Ferreira - CV"
+author: Jodavid Ferreira
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+  cache_data:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['dd_cv.css', 'resume-left.css']
+    self_contained: true
+    aside: left
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(magrittr) # For the pipe
+source("cv_printing_functions.r")
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = "https://docs.google.com/spreadsheets/d/1Brp4E5xcdOKFww3PCGKOV0_AzITMQF2QMERHgKdKvyI/edit?usp=sharing",
+  pdf_mode = params$pdf_mode
+)
+
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+<div class="perfil">
+</div>
+
+<!--
+```{r}
+# Build interactive network of positions colored by section
+# and connected if they occurred in the same year
+datadrivencv::build_network_logo(CV$entries_data)
+```
+
+
+```{r}
+if(params$pdf_mode){
+  cat("Visualizar este CV online através do link http://jodavid.github.io/cv/")
+} else {
+  cat("[<i class='fas fa-download'></i> Download do PDF deste CV](https://github.com/jodavid/cv/raw/master/jodavid_cv.pdf)")
+}
+```
+-->
+
+
+Contato {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+
+
+Competências {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_skill_bars()
+```
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Criado com pacote R [**pagedown**](https://github.com/rstudio/pagedown). 
+
+
+O código fonte utilizado pode ser encontrado em
+[github.com/jodavid/cv](https://github.com/jodavid/cv).
+
+Última atualização foi em `r format(Sys.Date(),'%d-%m-%Y')`.
+
+
+
+Main
+================================================================================
+
+Jodavid Ferreira {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("intro") 
+```
+
+
+
+Formação Acadêmica {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('educacao')
+```
+
+
+Experiência Profissional {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('experiencia_profissional')
+```
+
+
+Minicursos Ministrados {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('minicursos_ministrados')
+```
+
+
+
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
+<br>
+<br>
+
+Formação Complementar {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+
+```{r}
+CV %<>% print_section('formacao_complementar')
+```
+
+
+
+Premios e Títulos {data-icon=chart-line}
+--------------------------------------------------------------------------------
+
+
+```{r}
+CV %<>% print_section('premios_e_titulos')
+```
+
+
+
+Publicações em periódicos e congressos {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('publicacoes')
+```
+
+
+Patentes e registros  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('patentes')
+```
+
+Eventos Participados  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('eventos_participados')
+```
+
+```{bash}
+rm ddcv_cache.rds
+```
+
