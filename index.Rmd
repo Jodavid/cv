@@ -61,11 +61,8 @@ datadrivencv::build_network_logo(CV$entries_data)
 
 
 ```{r}
-if(params$pdf_mode){
-  cat("Visualizar este CV online através do link http://jodavid.github.io/cv/")
-} else {
-  cat("[<i class='fas fa-download'></i> Download do PDF deste CV](https://github.com/jodavid/cv/raw/master/jodavid_cv.pdf)")
-}
+cat("[<i class='fas fa-download'></i> Download do PDF deste CV](https://github.com/jodavid/cv/raw/master/jodavid_cv.pdf)")
+
 ```
 
 Contato {#contact}
