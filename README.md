@@ -14,3 +14,22 @@
 
 ☑ Jodavid Page: https://jodavid.github.io/
 
+
+## Required packages
+
+```R
+#' ----------------------------
+install.packages("devtools")
+#' ----------------------------
+install.packages("pagedown")
+#' ----------------------------
+devtools::install_github('mitchelloharawild/icons@v0.1.0')
+#' ----------------------------
+devtools::install_github("nstrayer/datadrivencv")
+#' ----------------------------
+```
+
+
+
+
+
