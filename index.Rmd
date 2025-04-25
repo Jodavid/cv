@@ -73,6 +73,7 @@ CV %>% print_contact_info()
 ```
 
 
+
 Competências {#skills}
 --------------------------------------------------------------------------------
 
@@ -123,6 +124,17 @@ Experiência Profissional {data-icon=suitcase}
 CV %<>% print_section('experiencia_profissional')
 ```
 
+
+Minicursos Ministrados {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('minicursos_ministrados')
+```
+
+
+
+
 <!-- These breaks just force a new page so section doesnt get cut off -->
 <br>
 <br>
@@ -136,6 +148,39 @@ Formação Complementar {data-icon=chalkboard-teacher}
 CV %<>% print_section('formacao_complementar')
 ```
 
+
+
+Premios e Títulos {data-icon=chart-line}
+--------------------------------------------------------------------------------
+
+
+```{r}
+CV %<>% print_section('premios_e_titulos')
+```
+
+
+
+Publicações em periódicos e congressos {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('publicacoes')
+```
+
+
+Patentes e registros  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('patentes')
+```
+
+Eventos Participados  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('eventos_participados')
+```
 
 ```{bash}
 rm ddcv_cache.rds
